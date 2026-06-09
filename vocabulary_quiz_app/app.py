@@ -61,7 +61,7 @@ class VocabularyQuizApp:
             return
         self.checked = True
         self.total += 1
-        user_input = self.answer_entry.get()
+        user_input = self.answer_entry.get().strip()
         if check_answer(self.current, user_input):
             self.score += 1
             self.feedback_var.set("정답입니다!")
