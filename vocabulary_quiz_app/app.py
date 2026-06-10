@@ -42,6 +42,9 @@ class VocabularyQuizApp:
             side=tk.LEFT, padx=6
         )
 
+        self.reset_button = ttk.Button(buttons, text="재시작", command=self.reset_quiz)
+        self.reset_button.pack(side=tk.LEFT, padx=6)
+
         ttk.Label(root, textvariable=self.feedback_var).pack(pady=8)
         ttk.Label(root, textvariable=self.score_var).pack()
 
@@ -69,3 +72,11 @@ class VocabularyQuizApp:
             self.feedback_var.set(f"오답입니다. 정답: {self.current.meaning}")
         self.score_var.set(f"Score: {self.score}/{self.total}")
         self.check_button.state(["disabled"])
+
+    def reset_quiz(self) -> None:
+        """초기화하고 새 단어를 불러옵니다."""
+        self.score = 0
+        self.total = 0
+        self.score_var.set("Score: 0/0")
+        self.feedback_var.set("퀴즈가 초기화되었습니다.")
+        self.next_word()
